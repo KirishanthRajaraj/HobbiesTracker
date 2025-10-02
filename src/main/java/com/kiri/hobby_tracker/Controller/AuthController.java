@@ -3,7 +3,9 @@ package com.kiri.hobby_tracker.Controller;
 import java.util.Optional;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -78,5 +80,13 @@ public class AuthController {
         } else {
             return ResponseEntity.status(401).body("User not found");
         }
+    }
+
+    @GetMapping("/isAuthenticated")
+    public Object isAuthenticated(Authentication authentication) {
+        if (authentication == null || !authentication.isAuthenticated()) {
+            return null; 
+        }
+        return authentication.getPrincipal();
     }
 }
