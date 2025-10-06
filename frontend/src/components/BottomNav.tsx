@@ -25,7 +25,8 @@ function BottomNav() {
             <BottomNavigation sx={{ backgroundColor: '#000' }}
                 showLabels
                 value={getTabValue(location.pathname)}
-                onChange={(event, newValue) => {
+                // @ts-ignore
+                onChange={(e, newValue) => {
                     if (newValue === 0) navigate('/');
                     else if (newValue === 1) navigate('/recommendation');
                 }}

@@ -1,5 +1,5 @@
 import { Button, TextField, Typography } from '@mui/material';
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import * as AuthClient from '../client/auth.tsx';
 // @ts-ignore
@@ -18,7 +18,7 @@ export default function Login() {
         e.preventDefault();
 
         try {
-            AuthClient.login(loginRequest).then((res) => {
+            AuthClient.login(loginRequest).then((_res) => {
                 console.log("Before navigate");
                 navigate("/");
                 console.log("After navigate");

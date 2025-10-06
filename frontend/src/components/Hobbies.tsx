@@ -1,21 +1,16 @@
-import { useEffect, useRef, useState, type SetStateAction } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import '../App.css'
-import { Alert, Autocomplete, Box, Button, IconButton, Modal, Slider, Snackbar, TextareaAutosize, TextField, ToggleButton, ToggleButtonGroup, Typography } from '@mui/material'
+import { Alert, Button, IconButton, Modal, Slider, Snackbar, TextareaAutosize, TextField, Typography } from '@mui/material'
 import CloseIcon from '@mui/icons-material/Close';
-import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import * as HobbyClient from '../client/hobby.tsx';
 import * as CategoryClient from '../client/category.tsx';
 import type { Hobby } from '../interfaces/Hobby.tsx';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
-import { Label } from '@mui/icons-material';
 import type { Category } from '../interfaces/Category.tsx';
 import CategoryToggleGroup from '../components/CategoryToggleGroup.tsx';
 import type { Point } from '../interfaces/Point.tsx';
 import PlusMinusInputs from '../components/PlusMinusInputs.tsx';
-import BottomNav from '../components/BottomNav.tsx';
-import HobbyRecommendation from '../components/HobbyRecommendation.tsx';
-import Home from '../App.tsx';
 import HighlightCalendar from './HightlightCalender.tsx';
 import WeekCalendar from './weekCalender.tsx';
 import type { PointsInterval } from '../interfaces/PointsInterval.tsx';
@@ -68,6 +63,7 @@ function Hobbies() {
     const [toastMessage, setToastMessage] = useState('')
     const [toastType, setToastType] = useState<ToastType>(ToastType.ERROR)
     const [categories, setCategories] = useState<Category[]>([])
+    // @ts-ignore
     const [selectedCategories, setSelectedCategories] = useState<Category[]>([])
     const [selectedInterval, setSelectedInterval] = useState<PointsInterval>()
     const [plusPoints, setPlusPoints] = useState<Point[]>([{ id: Date.now(), text: "", hobbyId: 0 }]);
@@ -350,7 +346,7 @@ function Hobbies() {
                             aria-label="Small steps"
                             defaultValue={0}
                             value={currentHobby.interestLevel}
-                            onChange={(e, newValue) => setCurrentHobby((prev) => ({ ...prev, interestLevel: newValue as number }))}
+                            onChange={(_e, newValue) => setCurrentHobby((prev) => ({ ...prev, interestLevel: newValue as number }))}
                             step={1}
                             marks
                             min={0}
@@ -365,7 +361,7 @@ function Hobbies() {
                             aria-label="Small steps"
                             defaultValue={0}
                             value={currentHobby.effortLevel}
-                            onChange={(e, newValue) => setCurrentHobby((prev) => ({ ...prev, effortLevel: newValue as number }))}
+                            onChange={(_e, newValue) => setCurrentHobby((prev) => ({ ...prev, effortLevel: newValue as number }))}
                             step={1}
                             marks
                             min={0}

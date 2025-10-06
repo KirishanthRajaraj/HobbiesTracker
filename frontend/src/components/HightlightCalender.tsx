@@ -14,9 +14,9 @@ interface Props {
   setHobbies: React.Dispatch<React.SetStateAction<Hobby[]>>;
 }
 
-export default function MyCalendar({ hobbyId, isInterval, setHobbies }: Props) {
+export default function MyCalendar({ hobbyId, /*isInterval,*/ setHobbies }: Props) {
   const [hobbyDates, setHobbyDates] = useState<HobbyDates[]>([]);
-  const [intervalDatesMonths, setIntervalDatesMonths] = useState<number[]>([]);
+  //const [intervalDatesMonths, setIntervalDatesMonths] = useState<number[]>([]);
 
   useEffect(() => {
     getHobbyDatesByHobbyId();

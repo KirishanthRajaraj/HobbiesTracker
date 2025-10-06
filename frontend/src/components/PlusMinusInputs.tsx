@@ -1,7 +1,5 @@
 import { Box, Button, IconButton, TextField, Typography } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Close";
-import { useState } from "react";
-import type { Hobby } from "../interfaces/Hobby";
 
 type Point = {
     id: number;

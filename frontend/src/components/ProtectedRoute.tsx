@@ -1,8 +1,7 @@
-import React, { use, useEffect, useState } from "react";
-import { Navigate } from "react-router-dom";
-import axios from "axios";
+import { useEffect, useState } from "react";
 import * as AuthClient from '../client/auth.tsx';
 
+// @ts-ignore
 const ProtectedRoute = ({ children }) => {
     const [authChecked, setAuthChecked] = useState(false);
     const [isAuthenticated, setIsAuthenticated] = useState(false);

@@ -1,8 +1,5 @@
-import * as React from "react";
 import axios from "axios";
 import type { Hobby } from "../interfaces/Hobby";
-import type { Point } from "../interfaces/Point";
-import type dayjs from "dayjs";
 import type { HobbyDates } from "../interfaces/HobbyDates";
 
 const API_URL = "http://localhost:8080";

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import { Box } from "@mui/material";
 
@@ -29,6 +29,7 @@ export default function NumberSlotsCalendar() {
         );
     };
 
+    /*
     const toggleSelectIntervalDates = (day: dayjs.Dayjs) => {
         const alreadySelected = intervalDatesMonths.filter((i) => i === weekdayNumber(day));
 
@@ -39,7 +40,7 @@ export default function NumberSlotsCalendar() {
             const intervalDateToRemove = intervalDatesMonths.find((i) => i === weekdayNumber(day));
             const updatedIntervalDays = intervalDatesMonths
                 .filter(day => day !== intervalDateToRemove);
-            /* new hobby with only intervalDateToRemove */
+            //new hobby with only intervalDateToRemove
 
             const newHobby: Hobby = {
                 id: hobbyId,
@@ -87,6 +88,7 @@ export default function NumberSlotsCalendar() {
             HobbyClient.patchHobby(newHobby.id, newHobby);
         }
     }
+*/
 
     return (
         <ThemeProvider theme={darkTheme}>

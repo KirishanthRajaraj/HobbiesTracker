@@ -1,5 +1,5 @@
-import { Button, CircularProgress, TextareaAutosize, TextField, Typography } from "@mui/material";
-import { use, useEffect, useState } from "react";
+import { Button, CircularProgress, TextareaAutosize, Typography } from "@mui/material";
+import { useEffect, useState } from "react";
 import * as AIClient from '../client/AI.tsx';
 import type { Hobby } from "../interfaces/Hobby.tsx";
 import * as HobbyClient from '../client/hobby.tsx';
@@ -10,7 +10,7 @@ function HobbyRecommendation() {
     const [loading, setLoading] = useState(false);
     const [hobbies, setHobbies] = useState<Hobby[]>()
 
-    const TextFieldStyles = {
+    /*const TextFieldStyles = {
         '& .MuiOutlinedInput-root': {
             backgroundColor: 'white',
             '& fieldset': {
@@ -20,7 +20,7 @@ function HobbyRecommendation() {
                 borderColor: 'blue',
             },
         },
-    };
+    };*/
 
     useEffect(() => {
         getAllHobbies();
