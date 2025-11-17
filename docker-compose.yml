@@ -1,29 +1,43 @@
-version: "3.9"
-
-services:
+services: 
   backend:
     build:
       context: ./backend
-      dockerfile: Dockerfile         # change path if your Dockerfile is e.g. backend/service/Dockerfile
-    image: myorg/backend:latest      # change to your registry/repo/tag
-    env_file:
-      - .env                         # put secrets here during local testing (don't commit)
-    environment:
-      - SPRING_PROFILES_ACTIVE=prod
+      dockerfile: Dockerfile
+    image: myorg/backend:latest
     ports:
       - "8080:8080"
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:8080/actuator/health || exit 1"]
+      test: ["CMD-SHELL", "curl -f http://localhost:8080/actuator/health || exit 1"]
       interval: 30s
       timeout: 5s
       retries: 3
+      start_period: 40s
     networks:
       - appnet
-
+  db:
+    image: postgres:16
+    env_file:
+      - .env
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_URL: ${SPRING_DATASOURCE_URL}
+    ports:
+      - "5432:5432"
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    networks:
+      - appnet
   frontend:
     build:
       context: ./frontend
-      dockerfile: Dockerfile         # expect this Dockerfile builds static and serves with nginx
+      dockerfile: Dockerfile
+    environment:
+      CHOKIDAR_USEPOLLING: "true"
+    volumes:
+      - /app/node_modules
+      - ./frontend:/app
     image: myorg/frontend:latest
     ports:
       - "80:80"
@@ -38,19 +52,9 @@ services:
     networks:
       - appnet
 
-# Optional DB service (uncomment if you need one)
-#  db:
-#    image: postgres:15-alpine
-#    env_file:
-#      - db.env
-#    volumes:
-#      - db-data:/var/lib/postgresql/data
-#    networks:
-#      - appnet
-
 networks:
   appnet:
     driver: bridge
 
-#volumes:
-#  db-data:
+volumes:
+  db_data:

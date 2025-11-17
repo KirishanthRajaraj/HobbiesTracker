@@ -1,0 +1,79 @@
+# -----------------------------
+# Global ignores
+# -----------------------------
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDEs
+.idea/
+*.iml
+.vscode/
+*.swp
+
+# Logs
+*.log
+logs/
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# Built artifacts (root-level)
+dist/
+build/
+
+# -----------------------------
+# Backend (Spring Boot + Maven)
+# -----------------------------
+
+/backend/target/
+/backend/.mvn/
+/backend/mvnw
+/backend/mvnw.cmd
+
+# Maven specific
+*.class
+*.jar
+*.war
+*.ear
+
+# Spring Boot temp
+/backend/.cache/
+
+# -----------------------------
+# Frontend (Node + Vite)
+# -----------------------------
+
+/frontend/node_modules/
+/frontend/dist/
+/frontend/.vite/
+*.tsbuildinfo
+
+# NPM logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# -----------------------------
+# Docker
+# -----------------------------
+
+# Docker volumes (optional if stored locally)
+docker-data/
+db_data/
+
+# -----------------------------
+# Other
+# -----------------------------
+
+# IntelliJ build directory
+out/
+
+# Local secrets
+*.key
+*.pem
+secret.txt

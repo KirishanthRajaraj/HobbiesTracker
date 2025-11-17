@@ -285,6 +285,7 @@ function Hobbies() {
     }
 
     useEffect(() => {
+        console.log("init testing");
         getAllHobbies();
         getAllCategories();
     }, []);

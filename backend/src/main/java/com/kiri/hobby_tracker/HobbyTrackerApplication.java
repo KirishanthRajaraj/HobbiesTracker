@@ -11,5 +11,5 @@ public class HobbyTrackerApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(HobbyTrackerApplication.class, args);
 	}
-
+ 
 }
