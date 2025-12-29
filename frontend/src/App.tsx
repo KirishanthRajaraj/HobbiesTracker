@@ -17,11 +17,10 @@ function App() {
 
             <Route path="/" element={
                 <Home />
+
             } />
             <Route path="/recommendation" element={
-              <ProtectedRoute>
                 <HobbyRecommendation />
-              </ProtectedRoute>
             } />
             <Route path="/login" element={
               <AuthRoute>

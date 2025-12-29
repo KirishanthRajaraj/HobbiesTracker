@@ -26,8 +26,11 @@ WORKDIR /app
 # Copy the built jar (assumes single jar in target/)
 COPY --from=builder /app/target/*.jar app.jar
 
-# Expose port your app uses
-EXPOSE 8080
+# Expose both the app port and debug port
+EXPOSE 8080 5005
+
+# Start the app in debug mode
+CMD ["java", "-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5005", "-jar", "app.jar"]
 
 # Recommended: set runtime java options via env var
 ENV JAVA_OPTS="-Xms256m -Xmx512m -Djava.security.egd=file:/dev/./urandom"

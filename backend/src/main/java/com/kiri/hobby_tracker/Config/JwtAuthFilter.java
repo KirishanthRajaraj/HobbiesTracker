@@ -1,4 +1,4 @@
-package com.kiri.hobby_tracker.Config;
+/*package com.kiri.hobby_tracker.Config;
 
 import java.io.IOException;
 import java.util.Collection;
@@ -92,3 +92,4 @@ public class JwtAuthFilter extends OncePerRequestFilter {
         filterChain.doFilter(request, response);
     }
 }
+*/

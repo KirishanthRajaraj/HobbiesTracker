@@ -6,31 +6,31 @@ const API_URL = "http://localhost:8080";
 //const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
 export const getAllHobbies = async () => {
-    return axios.get(`${API_URL}/getAllHobbies`, { withCredentials: true });
+    return axios.get(`${API_URL}/getAllHobbies`);
 }
 
 export const getHobbyById = async (hobbyId: number) => {
-    return axios.get(`${API_URL}/getHobbyById/${hobbyId}`, { withCredentials: true });
+    return axios.get(`${API_URL}/getHobbyById/${hobbyId}`);
 }
 
 export const postHobby = async (hobby: Hobby) => {
-    return axios.post(`${API_URL}/addHobby`, hobby, { withCredentials: true });
+    return axios.post(`${API_URL}/addHobby`, hobby);
 }
 
 export const editHobby = async (id: number, hobby: Hobby) => {
-    return axios.put(`${API_URL}/editHobby/${id}`, hobby, { withCredentials: true });
+    return axios.put(`${API_URL}/editHobby/${id}`, hobby);
 }
 
 export const patchHobby = async (id: number, hobby: Hobby) => {
-    return axios.patch(`${API_URL}/patchHobby/${id}`, hobby), { withCredentials: true };
+    return axios.patch(`${API_URL}/patchHobby/${id}`, hobby);
 }
 
 export const deleteHobby = async (id: number) => {
-    return axios.delete(`${API_URL}/deleteHobby/${id}`, { withCredentials: true });
+    return axios.delete(`${API_URL}/deleteHobby/${id}`);
 }
 
 export const updateHobbyIntervalDate = async (hobbyDate: HobbyDates): Promise<HobbyDates> => {
-    const response = await axios.put(`${API_URL}/updateHobbyIntervalDate/`, hobbyDate, { withCredentials: true });
+    const response = await axios.put(`${API_URL}/updateHobbyIntervalDate/`, hobbyDate);
     return response.data;
 };
 
@@ -39,7 +39,7 @@ export const removeHobbyIntervalDate = async (hobbyDates: HobbyDates) => {
 }
 
 export const updateHobbyDate = async (hobbyDate: HobbyDates): Promise<HobbyDates> => {
-    const response = await axios.put(`${API_URL}/updateHobbyDate/`, hobbyDate, { withCredentials: true });
+    const response = await axios.put(`${API_URL}/updateHobbyDate/`, hobbyDate);
     return response.data;
 };
 
@@ -48,23 +48,23 @@ export const removeHobbyDate = async (hobbyDates: HobbyDates) => {
 }
 
 export const getAllHobbyDates = async () => {
-    return axios.get(`${API_URL}/getAllHobbyDates/`, { withCredentials: true });
+    return axios.get(`${API_URL}/getAllHobbyDates/`);
 }
 
 export const getIntervalDatesByHobbyId = async (hobbyId: number) => {
-    return axios.get(`${API_URL}/getIntervalDatesByHobbyId/${hobbyId}`, { withCredentials: true });
+    return axios.get(`${API_URL}/getIntervalDatesByHobbyId/${hobbyId}`);
 }
 
 export const getHobbyDatesByHobbyId = async (hobbyId: number) => {
-    return axios.get(`${API_URL}/getHobbyDatesByHobbyId/${hobbyId}`, { withCredentials: true });
+    return axios.get(`${API_URL}/getHobbyDatesByHobbyId/${hobbyId}`);
 }
 
 export const updateHobbyPoints = async (hobbyId: number): Promise<number> => {
-    const response = await axios.put(`${API_URL}/updateHobbyPoints/${hobbyId}`, { withCredentials: true });
+    const response = await axios.put(`${API_URL}/updateHobbyPoints/${hobbyId}`);
     return response.data;
 }
 
 export const removeHobbyPoints = async (hobbyId: number) => {
-    const response = await axios.delete(`${API_URL}/removeHobbyPoints/${hobbyId}`, { withCredentials: true });
+    const response = await axios.delete(`${API_URL}/removeHobbyPoints/${hobbyId}`);
     return response.data;
 }

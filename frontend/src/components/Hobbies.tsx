@@ -322,7 +322,7 @@ function Hobbies() {
     const renderHobbyEditModal = () => {
         return (
             <Modal className='flex justify-center align-center' open={openHobbyEditModal} onClose={closeHobbyEditModal} component="div">
-                <div className='w-auto h-auto flex justify-center align-center flex-col rounded-3xl overflow-x-auto my-6'>
+                <div className='w-[44rem] h-auto flex justify-center align-center flex-col rounded-3xl overflow-x-auto my-6'>
                     <div className='bg-neutral-950 p-12 rounded-xl flex flex-col scroll-auto'>
                         <IconButton
                             onClick={closeHobbyEditModal}

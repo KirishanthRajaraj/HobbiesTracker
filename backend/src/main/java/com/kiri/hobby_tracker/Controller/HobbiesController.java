@@ -31,15 +31,27 @@ public class HobbiesController {
         this.hobbiesService = hobbiesService;
     }
 
+    @GetMapping("/test")
+    public String test() {
+        System.out.println("in test endpoint");
+
+        try {
+            return "worked";
+        } catch (Exception e) {
+            System.out.println("Error get test: " + e.getMessage());
+        }
+        return "error worked";
+    }
+
     @GetMapping("/getAllHobbies")
-    public List<HobbyDTO> getAllHobbies() {
+    public ResponseEntity<List<HobbyDTO>> getAllHobbies() {
         try {
             var hobbies = hobbiesService.getAllHobbies();
-            return hobbies;
+            return ResponseEntity.ok(hobbies);
         } catch (Exception e) {
             System.out.println("Error fetching hobbies: " + e.getMessage());
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
-        return List.of();
     }
 
     @GetMapping("/getHobbyById/{id}")
@@ -54,8 +66,13 @@ public class HobbiesController {
     }
 
     @PostMapping("/addHobby")
-    public Hobby addHobby(@RequestBody HobbyDTO hobby) {
-        return hobbiesService.addHobby(hobby);
+    public ResponseEntity<Hobby> addHobby(@RequestBody HobbyDTO hobby) {
+        try {
+            return ResponseEntity.ok(hobbiesService.addHobby(hobby));
+        } catch (Exception e) {
+            System.out.println("Error adding hobby: " + e.getMessage());
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
     }
 
     @PutMapping("/editHobby/{id}")
